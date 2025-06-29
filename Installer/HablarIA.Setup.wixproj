@@ -1,0 +1,29 @@
+<Project Sdk="WixToolset.Sdk/6.0.1">
+  <PropertyGroup>
+    <OutputName>HablarIA</OutputName>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="WixToolset.UI.wixext" Version="6.0.1" />
+    <PackageReference Include="WixToolset.Util.wixext" Version="6.0.1" />
+    <WixExtension Include="WixToolset.UI" />
+    <WixExtension Include="WixToolset.Util" />
+  </ItemGroup>
+
+  <!-- Directorio de publicación y constante para las rutas de archivos -->
+  <PropertyGroup>
+    <!-- Calcula la carpeta de publicación según la configuración de compilación -->
+    <PublishDir>$(MSBuildProjectDirectory)\..\src\bin\$(Configuration)\net8.0-windows\publish</PublishDir>
+    <!-- Expone la ruta como constante de preprocesador 'BuildDir' -->
+    <DefineConstants>$(DefineConstants);BuildDir=$(PublishDir)</DefineConstants>
+  </PropertyGroup>
+
+  <!-- Compila y publica la aplicación WPF antes de generar el MSI -->
+  <Target Name="PublishHablarIA" BeforeTargets="Build">
+    <Exec Command="dotnet publish $(MSBuildProjectDirectory)\..\src\WhisperTranscriberApp.csproj -c $(Configuration)" />
+  </Target>
+
+  <!-- Para que MSBuild restaure las dependencias de la app -->
+  <ItemGroup>
+    <ProjectReference Include="..\src\WhisperTranscriberApp.csproj" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,9 @@
+C:\Users\toto\Documents\AccesoRapido\texacoSoloApi\app\frontend\Installer\obj\Release\HablarIA.Setup.wixproj.CoreCompileInputs.cache
+C:\Users\toto\Documents\AccesoRapido\texacoApiCloudflare\frontend\installer\obj\Release\HablarIA.Setup.wixproj.CoreCompileInputs.cache
+C:\Users\toto\Documents\AccesoRapido\texacoApiCloudflare\frontend\Installer\obj\Release\cab1.cab
+C:\Users\toto\Documents\AccesoRapido\texacoApiCloudflare\frontend\Installer\obj\Release\HablarIA.msi
+C:\Users\toto\Documents\AccesoRapido\texacoApiCloudflare\frontend\Installer\obj\Release\HablarIA.wixpdb
+C:\Users\toto\Documents\AccesoRapido\texacoApiCloudflare\frontend\Installer\obj\Release\HablarIA.Setup.wixproj.BindTracking-neutral.txt
+C:\Users\toto\Documents\AccesoRapido\texacoApiCloudflare\frontend\Installer\bin\Release\HablarIA.msi
+C:\Users\toto\Documents\AccesoRapido\texacoApiCloudflare\frontend\Installer\bin\Release\cab1.cab
+C:\Users\toto\Documents\AccesoRapido\texacoApiCloudflare\frontend\Installer\bin\Release\HablarIA.wixpdb

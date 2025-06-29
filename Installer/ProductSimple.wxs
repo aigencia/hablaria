@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs"
+     xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
+
+  <!-- La constante BuildDir se define desde el proyecto MSBuild -->
+
+  <Package
+    Name="HablarIA"
+    Manufacturer="Aigency"
+    Version="1.0.0"
+    UpgradeCode="12345678-1234-1234-1234-1234567890ab"
+    InstallerVersion="500"
+    Scope="perMachine"
+    Compressed="yes">
+
+    <!-- Actualizaciones -->
+    <MajorUpgrade DowngradeErrorMessage="Ya existe una versión más reciente de HablarIA." />
+    <MediaTemplate />
+
+    <!-- UI: instalador clásico con selección de carpeta -->
+    <ui:WixUI Id="WixUI_InstallDir" InstallDirectory="INSTALLFOLDER" />
+
+    <!-- Directorios de destino estándar -->
+    <StandardDirectory Id="ProgramFilesFolder">
+      <Directory Id="INSTALLFOLDER" Name="HablarIA" />
+    </StandardDirectory>
+
+    <StandardDirectory Id="DesktopFolder" />
+
+    <!-- Archivos principales -->
+    <ComponentGroup Id="AppFiles">
+      <!-- Componente per-machine con el ejecutable principal y demás archivos -->
+      <Component Directory="INSTALLFOLDER" Guid="*">
+        <!-- Ejecutable principal (KeyPath per-machine) -->
+        <File Source="$(var.BuildDir)\HablarIA.exe" Id="MainExe" KeyPath="yes" />
+        <!-- Otros archivos (.dll, .json) vendrán mediante Files externo -->
+      </Component>
+
+      <!-- Resto de archivos (DLL/JSON) de la carpeta de compilación -->
+      <Files Directory="INSTALLFOLDER" Include="$(var.BuildDir)\*.dll" />
+      <Files Directory="INSTALLFOLDER" Include="$(var.BuildDir)\*.json" />
+
+      <!-- Componente per-user para acceso directo y registro (corrige ICE43/ICE57) -->
+      <Component Directory="DesktopFolder" Guid="*">
+        <!-- Acceso directo en el escritorio (no anunciado) -->
+        <Shortcut Id="DesktopShortcut"
+                  Name="HablarIA"
+                  Target="[#MainExe]"
+                  WorkingDirectory="INSTALLFOLDER" />
+
+        <!-- Clave de registro usada como KeyPath (HKCU) -->
+        <RegistryValue Root="HKCU"
+                       Key="Software\HablarIA"
+                       Name="installed"
+                       Type="integer"
+                       Value="1"
+                       KeyPath="yes" />
+      </Component>
+    </ComponentGroup>
+
+    <!-- Característica -->
+    <Feature Id="MainFeature" Title="HablarIA" Level="1">
+      <ComponentGroupRef Id="AppFiles" />
+    </Feature>
+  </Package>
+</Wix>

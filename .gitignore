@@ -1,0 +1,8 @@
+# Ignore everything
+/*
+
+# Except the Installer folder
+!Installer/
+
+# Optionally, do not ignore .gitignore itself
+!.gitignore

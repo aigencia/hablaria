@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "oyjX5SCeXyc=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\toto\\Documents\\AccesoRapido\\texacoApiCloudflare\\frontend\\installer\\HablarIA.Setup.wixproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\toto\\.nuget\\packages\\wixtoolset.ui.wixext\\6.0.1\\wixtoolset.ui.wixext.6.0.1.nupkg.sha512",
+    "C:\\Users\\toto\\.nuget\\packages\\wixtoolset.util.wixext\\6.0.1\\wixtoolset.util.wixext.6.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}
